@@ -60,4 +60,6 @@
             @endforelse
         </tbody>
     </table>
+    {{ $students->links() }}
+    
 @endsection
