@@ -30,11 +30,11 @@ class StudentController extends Controller
     {
         $request->validate([
     'name'   => 'required|min:3|max:100|unique:students,name',
-    ], [
-    'name.unique' => 'Nama sudah digunakan, pakai nama lain ya!',
     'gender' => 'required|in:L,P',
     'phone'  => 'nullable|max:15',
     'school' => 'required|max:150',
+    ], [
+    'name.unique' => 'Nama sudah digunakan, pakai nama lain ya!',
     
 ]);
 
