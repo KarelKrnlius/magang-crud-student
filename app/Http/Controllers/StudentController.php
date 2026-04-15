@@ -9,23 +9,41 @@ class StudentController extends Controller
 {
     public function index()
     {
+<<<<<<< HEAD
         $students = Student::orderBy('name')->get();
         return view('students.index', compact('students'));
+=======
+        // versi feature-duplikat (ubah urutan + tambah latest)
+        $students = Student::latest()->get();
+        return view('students.index', ['students' => $students]);
+>>>>>>> feature-duplikat
     }
 
     public function create()
     {
+<<<<<<< HEAD
         return view('students.create');
-    }
-
-    public function store(Request $request)
-    {
-        $request->validate([
-            'name'   => 'required|min:3|max:100',
-            'gender' => 'required|in:L,P',
-            'phone'  => 'nullable|max:15',
-            'school' => 'required|max:150',
+=======
+        // versi feature (pakai cara lain)
+        return view('students.create', [
+            'title' => 'Tambah Data Siswa'
         ]);
+>>>>>>> feature-duplikat
+
+        /**
+         * Store a newly created resource in storage.
+         */
+        public function store(Request $request)
+        {
+            $request->validate([
+        'name'   => 'required|min:3|max:100|unique:students,name',
+        'gender' => 'required|in:L,P',
+        'phone'  => 'nullable|max:15',
+        'school' => 'required|max:150',
+        ], [
+        'name.unique' => 'Nama sudah digunakan, pakai nama lain ya!',
+    
+]);
 
 
         Student::create([
@@ -60,14 +78,13 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-        $request->validate([
-            'name'   => 'required|min:3|max:100',
-            'gender' => 'required|in:L,P',
-            'phone'  => 'nullable|max:15',
-            'school' => 'required|max:150',
-            'active' => 'required|boolean',
-        ]);
-
+       $request->validate([
+    'name'   => 'required|min:3|max:100|unique:students,name,' . $student->id,
+    'gender' => 'required|in:L,P',
+    'phone'  => 'nullable|max:15',
+    'school' => 'required|max:150',
+    'active' => 'required|boolean',
+]);
         $student->update([
             'name'   => $request->name,
             'gender' => $request->gender,
