@@ -4,44 +4,37 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Student;
-
 class StudentController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
-<<<<<<< HEAD
         $students = Student::orderBy('name')->get();
         return view('students.index', compact('students'));
-=======
-        // versi feature-duplikat (ubah urutan + tambah latest)
-        $students = Student::latest()->get();
-        return view('students.index', ['students' => $students]);
->>>>>>> feature-duplikat
     }
 
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
-<<<<<<< HEAD
         return view('students.create');
-=======
-        // versi feature (pakai cara lain)
-        return view('students.create', [
-            'title' => 'Tambah Data Siswa'
-        ]);
->>>>>>> feature-duplikat
+    }
 
-        /**
-         * Store a newly created resource in storage.
-         */
-        public function store(Request $request)
-        {
-            $request->validate([
-        'name'   => 'required|min:3|max:100|unique:students,name',
-        'gender' => 'required|in:L,P',
-        'phone'  => 'nullable|max:15',
-        'school' => 'required|max:150',
-        ], [
-        'name.unique' => 'Nama sudah digunakan, pakai nama lain ya!',
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        $request->validate([
+    'name'   => 'required|min:3|max:100|unique:students,name',
+    'gender' => 'required|in:L,P',
+    'phone'  => 'nullable|max:15',
+    'school' => 'required|max:150',
+    ], [
+    'name.unique' => 'Nama sudah digunakan, pakai nama lain ya!',
     
 ]);
 
