@@ -3,10 +3,11 @@
 @section('title', 'Daftar Siswa')
 
 @section('content')
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+<div class="table-container">
+
+    <div class="table-header">
         <h1>Daftar Siswa Magang</h1>
-        <a href="{{ route('students.create') }}" 
-           style="background:#1a1a2e; color:white; padding:10px 20px; border-radius:6px; text-decoration:none;">
+        <a href="{{ route('students.create') }}" class="btn-primary">
             + Tambah Siswa
         </a>
     </div>
@@ -151,7 +152,7 @@
     border-bottom:1px solid #f1f5f9;
 }
 
-/* ZEBRA MODERN */
+/* ZEBRA */
 .table-custom tbody tr:nth-child(even){
     background:#f9fafb;
 }
@@ -160,7 +161,7 @@
     background:#eef2ff;
 }
 
-/* LEFT TEXT */
+/* TEXT */
 .text-left{
     text-align:left;
     font-weight:500;
@@ -242,4 +243,4 @@
 }
 
 </style>
-@endpush    
+@endpush
