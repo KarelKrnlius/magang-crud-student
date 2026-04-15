@@ -3,11 +3,10 @@
 @section('title', 'Daftar Siswa')
 
 @section('content')
-<div class="table-container">
-
-    <div class="table-header">
-        <h1>Daftar Peserta Magang</h1>
-        <a href="{{ route('students.create') }}" class="btn-primary">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+        <h1>Daftar Siswa Magang</h1>
+        <a href="{{ route('students.create') }}" 
+           style="background:#1a1a2e; color:white; padding:10px 20px; border-radius:6px; text-decoration:none;">
             + Tambah Siswa
         </a>
     </div>
