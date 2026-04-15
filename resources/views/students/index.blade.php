@@ -30,9 +30,10 @@
             </tr>
         </thead>
         <tbody>
-            @forelse ($students as $i => $s)
+           @forelse ($students as $s)
             <tr style="border-bottom:1px solid #eee; text-align:center;">
-                <td style="padding:12px;">{{ $i + 1 }}</td>
+                <td style="padding:12px;">
+    {{ ($students->currentPage() - 1) * $students->perPage() + $loop->iteration }}</td>
                 <td style="padding:12px; text-align:left;">{{ $s->name }}</td>
                 <td style="padding:12px;">{{ $s->gender == 'L' ? '👦 Laki-laki' : '👧 Perempuan' }}</td>
                 <td style="padding:12px;">{{ $s->phone ?? '-' }}</td>
@@ -60,7 +61,7 @@
             @endforelse
         </tbody>
     </table>
-    {{ $students->links('pagination::bootstrap-5') }}
+    {{ $students->links('vendor.pagination.bootstrap-5') }}
 
     
     
