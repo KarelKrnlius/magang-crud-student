@@ -7,7 +7,7 @@
         <h1>Daftar Siswa Magang</h1>
         <a href="{{ route('students.create') }}" 
            style="background:#1a1a2e; color:white; padding:10px 20px; border-radius:6px; text-decoration:none;">
-            + Tambah Siswa
+            + Tambah Siswa SMKN 20
         </a>
     </div>
 
