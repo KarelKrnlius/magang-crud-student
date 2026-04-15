@@ -4,7 +4,7 @@
 
 @section('content')
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
-        <h1>Daftar Siswa Magang</h1>
+        <h1>Data Peserta Magang</h1>
         <a href="{{ route('students.create') }}" 
            style="background:#1a1a2e; color:white; padding:10px 20px; border-radius:6px; text-decoration:none;">
             + Tambah Siswa
