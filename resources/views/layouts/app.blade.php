@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+    
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="{{ asset('images/logo/logo.png') }}">
@@ -185,6 +188,47 @@
         font-size: 13px;
         margin-top: auto; 
     }
+    <meta charset="utf-8">
+    <title>Laravel</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CSS PAGINATION KAMU -->
+    <style>
+        .page-link {
+            transition: all 0.3s ease;
+        }
+
+        .page-link:hover {
+            background-color: #0d6efd;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .page-item.active .page-link {
+            background: linear-gradient(45deg, #0d6efd, #0dcaf0);
+            border: none;
+        }
+    
+<style>
+.page-link {
+    transition: all 0.3s ease !important;
+    border-radius: 50px !important;
+}
+
+.page-link:hover {
+    background-color: #0d6efd !important;
+    color: #fff !important;
+    transform: translateY(-2px);
+}
+
+.page-item.active .page-link {
+    background: linear-gradient(45deg, #0d6efd, #0dcaf0) !important;
+    border: none !important;
+}
+</style>
+
     </style>
 
     @stack('styles')

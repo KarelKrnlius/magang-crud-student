@@ -11,7 +11,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::orderBy('name')->get();
+        $students = Student::orderBy('name')->paginate(10);
         return view('students.index', compact('students'));
     }
 
@@ -29,11 +29,15 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'   => 'required|min:3|max:100',
-            'gender' => 'required|in:L,P',
-            'phone'  => 'nullable|max:15',
-            'school' => 'required|max:150',
-        ]);
+    'name'   => 'required|min:3|max:100|unique:students,name',
+    'gender' => 'required|in:L,P',
+    'phone'  => 'nullable|max:15',
+    'school' => 'required|max:150',
+    ], [
+    'name.unique' => 'Nama sudah digunakan, pakai nama lain ya!',
+    
+]);
+
 
         Student::create([
             'name'   => $request->name,
@@ -67,14 +71,13 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-        $request->validate([
-            'name'   => 'required|min:3|max:100',
-            'gender' => 'required|in:L,P',
-            'phone'  => 'nullable|max:15',
-            'school' => 'required|max:150',
-            'active' => 'required|boolean',
-        ]);
-
+       $request->validate([
+    'name'   => 'required|min:3|max:100|unique:students,name,' . $student->id,
+    'gender' => 'required|in:L,P',
+    'phone'  => 'nullable|max:15',
+    'school' => 'required|max:150',
+    'active' => 'required|boolean',
+]);
         $student->update([
             'name'   => $request->name,
             'gender' => $request->gender,

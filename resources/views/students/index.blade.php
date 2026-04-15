@@ -32,12 +32,18 @@
             </thead>
 
             <tbody>
-                @forelse ($students as $i => $s)
+                @forelse ($students as $s)
                 <tr>
-                    <td>{{ $i + 1 }}</td>
+                    <td>
+                        {{ ($students->currentPage() - 1) * $students->perPage() + $loop->iteration }}
+                    </td>
+
                     <td class="text-left">{{ $s->name }}</td>
+
                     <td>{{ $s->gender == 'L' ? 'L' : 'P' }}</td>
+
                     <td>{{ $s->phone ?? '-' }}</td>
+
                     <td>{{ $s->school }}</td>
 
                     <td>
@@ -52,6 +58,7 @@
 
                             <form action="{{ route('students.destroy', $s->id) }}"
                                   method="POST"
+                                  class="inline-form"
                                   onsubmit="return confirm('Yakin hapus {{ $s->name }}?');">
                                 @csrf
                                 @method('DELETE')
@@ -61,13 +68,21 @@
                         </div>
                     </td>
                 </tr>
+
                 @empty
                 <tr>
-                    <td colspan="7" class="empty">Belum ada data siswa.</td>
+                    <td colspan="7" class="empty">
+                        Belum ada data siswa.
+                    </td>
                 </tr>
                 @endforelse
             </tbody>
         </table>
+    </div>
+
+    <!-- PAGINATION -->
+    <div class="pagination-wrapper">
+        {{ $students->links('vendor.pagination.bootstrap-5') }}
     </div>
 
 </div>
@@ -88,6 +103,8 @@
     justify-content:space-between;
     align-items:center;
     margin-bottom:20px;
+    flex-wrap:wrap;
+    gap:10px;
 }
 
 .table-header h1{
@@ -160,7 +177,7 @@
     background:#eef2ff;
 }
 
-/* TEXT */
+/* LEFT TEXT */
 .text-left{
     text-align:left;
     font-weight:500;
@@ -188,8 +205,12 @@
 .action{
     display:flex;
     justify-content:center;
-    gap:10px;
     align-items:center;
+    gap:10px;
+}
+
+.inline-form{
+    display:inline;
 }
 
 .link-edit{
@@ -218,6 +239,12 @@
 .empty{
     padding:30px;
     color:#9ca3af;
+    text-align:center;
+}
+
+/* PAGINATION */
+.pagination-wrapper{
+    margin-top:20px;
 }
 
 /* RESPONSIVE */
@@ -226,7 +253,6 @@
     .table-header{
         flex-direction:column;
         align-items:flex-start;
-        gap:10px;
     }
 
     .btn-primary{
