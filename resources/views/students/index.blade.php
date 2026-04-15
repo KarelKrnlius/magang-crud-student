@@ -6,7 +6,7 @@
 <div class="table-container">
 
     <div class="table-header">
-        <h1>Daftar Siswa Magang</h1>
+        <h1>Daftar Peserta Magang</h1>
         <a href="{{ route('students.create') }}" class="btn-primary">
             + Tambah Siswa
         </a>
