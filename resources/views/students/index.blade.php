@@ -3,17 +3,16 @@
 @section('title', 'Daftar Siswa')
 
 @section('content')
-<div class="table-container">
-
-    <div class="table-header">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
         <h1>Daftar Siswa Magang</h1>
-        <a href="{{ route('students.create') }}" class="btn-primary">
+        <a href="{{ route('students.create') }}" 
+           style="background:#1a1a2e; color:white; padding:10px 20px; border-radius:6px; text-decoration:none;">
             + Tambah Siswa
         </a>
     </div>
 
     @if(session('success'))
-        <div class="alert-success">
+        <div style="background:#d4edda; color:#155724; padding:12px; border-radius:6px; margin-bottom:20px;">
             {{ session('success') }}
         </div>
     @endif
@@ -61,175 +60,8 @@
             @endforelse
         </tbody>
     </table>
+    {{ $students->links('pagination::bootstrap-5') }}
+
+    
+    
 @endsection
-
-
-@push('styles')
-<style>
-
-/* CONTAINER */
-.table-container{
-    padding: 20px;
-}
-
-/* HEADER */
-.table-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:20px;
-}
-
-.table-header h1{
-    font-size: 24px;
-    font-weight: 600;
-    color:#111827;
-}
-
-/* BUTTON */
-.btn-primary{
-    background: linear-gradient(135deg,#4f46e5,#6366f1);
-    color:white;
-    padding:10px 16px;
-    border-radius:8px;
-    text-decoration:none;
-    font-weight:500;
-    transition:0.2s;
-}
-
-.btn-primary:hover{
-    transform: translateY(-1px);
-    opacity: 0.9;
-}
-
-/* SUCCESS */
-.alert-success{
-    background:#ecfdf5;
-    color:#065f46;
-    padding:12px;
-    border-radius:8px;
-    margin-bottom:20px;
-    border-left:4px solid #10b981;
-}
-
-/* TABLE WRAPPER */
-.table-wrapper{
-    overflow-x:auto;
-    background:white;
-    border-radius:10px;
-    box-shadow:0 4px 15px rgba(0,0,0,0.05);
-}
-
-/* TABLE */
-.table-custom{
-    width:100%;
-    border-collapse:collapse;
-    min-width:700px;
-}
-
-.table-custom th{
-    background:#111827;
-    color:white;
-    padding:14px;
-    font-size:13px;
-    text-transform:uppercase;
-}
-
-.table-custom td{
-    padding:14px;
-    text-align:center;
-    border-bottom:1px solid #f1f5f9;
-}
-
-/* ZEBRA */
-.table-custom tbody tr:nth-child(even){
-    background:#f9fafb;
-}
-
-.table-custom tbody tr:hover{
-    background:#eef2ff;
-}
-
-/* TEXT */
-.text-left{
-    text-align:left;
-    font-weight:500;
-}
-
-/* BADGE */
-.badge{
-    padding:5px 12px;
-    border-radius:999px;
-    font-size:12px;
-    font-weight:600;
-}
-
-.badge.active{
-    background:#dcfce7;
-    color:#166534;
-}
-
-.badge.inactive{
-    background:#fee2e2;
-    color:#991b1b;
-}
-
-/* ACTION */
-.action{
-    display:flex;
-    justify-content:center;
-    gap:10px;
-    align-items:center;
-}
-
-.link-edit{
-    color:#4f46e5;
-    text-decoration:none;
-    font-weight:500;
-}
-
-.link-edit:hover{
-    text-decoration:underline;
-}
-
-.btn-delete{
-    background:none;
-    border:none;
-    color:#ef4444;
-    cursor:pointer;
-    font-weight:500;
-}
-
-.btn-delete:hover{
-    text-decoration:underline;
-}
-
-/* EMPTY */
-.empty{
-    padding:30px;
-    color:#9ca3af;
-}
-
-/* RESPONSIVE */
-@media (max-width:768px){
-
-    .table-header{
-        flex-direction:column;
-        align-items:flex-start;
-        gap:10px;
-    }
-
-    .btn-primary{
-        width:100%;
-        text-align:center;
-    }
-
-    .table-custom th,
-    .table-custom td{
-        padding:10px;
-        font-size:12px;
-    }
-}
-
-</style>
-@endpush
